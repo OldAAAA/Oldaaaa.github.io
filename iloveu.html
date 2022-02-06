@@ -10,11 +10,18 @@
 </head>
 
 <body>
-    <audio src="./music.mp3" autoplay="true" loop="loop"></audio>
+    <!-- <iframe src="./music.mp3" allow="autoplay" id="iframeAudio" style="display: none"></iframe> -->
+    <!-- <audio id="playAudio" autoplay loop muted="muted">
+        <source src="./music.mp3" type="audio/mp3">
+    </audio> -->
+    <!-- <audio id="audio" src="./music.mp3" style="opacity:0" preload="auto" controls loop hidden="true"></audio>   -->
+    <audio id = "music" hidden>
+        <source src="./music.mp3" type="audio/mpeg">
+      </audio>
     <div id="back">
         <!-- 设置展示的图片，github pages不能有后台程序只能一条一条手动添加了 囧 -->
         <div id="carousel" class="carousel slide carousel-fade carousel-position">
-            <div class="carousel-inner" style="width: 100%;height: 2000px;" id="background">
+            <div class="carousel-inner" style="width: 100%;height: 80%;" id="background">
                 <div class="item active" style="width: 100%;height: 100%;">
                     <div style="width: 100%;height: 100%;background:url(./img/1.jpg);background-size: cover;"></div>
                 </div>
@@ -105,7 +112,7 @@
             </div>
         </div>
     </div>
-    <div class="modal show" style="top:24%;">
+    <div id="card" class="modal show" style="top:24%;">
         <div class="modal-dialog" style="opacity: .9">
             <div class="modal-content" style="opacity:.85">
                 <div class="modal-header">
@@ -189,6 +196,20 @@
             }();
 
         });
+    </script>
+    <script>
+        var audio = document.getElementById('music');
+         $("#card").bind("touchstart", function bf() {
+            if (audio !== null) {
+                //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+                //alert(audio.paused);
+                if (audio.paused) {
+                    audio.play(); //audio.play();// 这个就是播放\
+                } else {
+                    audio.pause(); // 这个就是暂停
+                }
+            }
+        })
     </script>
 </body>
 
